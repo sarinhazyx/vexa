@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vexa - Área do Freelancer</title>
+    <link rel="stylesheet" href="freelancer.css">
+      <script src="./freelancer.js" defer></script>
+</head>
+<body>
+    <header class="top-header">
+        <div class="brand"><span class="brand-mark">V</span> VEXA</div>
+        <nav class="main-nav">
+            <button class="nav-link active" data-view="explore">Explorar</button>
+            <button class="nav-link" data-view="projects">Projetos</button>
+            <button class="nav-link" data-view="applications">Minhas candidaturas</button>
+            <button class="nav-link" data-view="profile">Meu perfil</button>
+        </nav>
+        <div class="header-actions">
+            <button class="publish-btn">＋ Publicar projeto</button>
+            <button class="icon-button" aria-label="Mensagens">♧<span class="notification-dot"></span></button>
+            <button class="icon-button" aria-label="Notificações">♢</button>
+            <div class="header-avatar">MC</div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="exploreView" class="view active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Encontre projetos<br>que combinam<br>com o <span>seu talento.</span></h1>
+                    <p>Design, desenvolvimento, vídeo, marketing e muito mais.<br>Tudo em um só lugar.</p>
+                    <div class="hero-search">
+                        <span>⌕</span>
+                        <input id="heroSearch" type="search" placeholder="Buscar projetos, categorias ou habilidades...">
+                        <span>☷</span>
+                    </div>
+                </div>
+                <div class="free-badge"><span>ϟ</span><span>Candidatura<br>gratuita</span></div>
+            </div>
+
+            <div class="category-row">
+                <button class="category-card active" data-category=""><span class="category-icon">▦</span><span>Todas</span></button>
+                <button class="category-card" data-category="Design"><span class="category-icon">✎</span><span>Design &amp;<br>Criatividade</span></button>
+                <button class="category-card" data-category="Desenvolvimento"><span class="category-icon">&lt;/&gt;</span><span>Desenvolvimento<br>Web</span></button>
+                <button class="category-card" data-category="Marketing"><span class="category-icon">◉</span><span>Marketing<br>Digital</span></button>
+                <button class="category-card" data-category="Vídeo"><span class="category-icon">▻</span><span>Vídeo &amp;<br>Audiovisual</span></button>
+                <button class="category-card" data-category="Redação"><span class="category-icon">▤</span><span>Redação &amp;<br>Conteúdo</span></button>
+                <button class="category-card" data-category="Consultoria"><span class="category-icon">◰</span><span>Consultoria</span></button>
+                <button class="category-card" data-category="Outros"><span class="category-icon">•••</span><span>Outros<br>Serviços</span></button>
+            </div>
+
+            <div class="explore-layout">
+                <aside class="filters">
+                    <div class="filter-head"><h2>▽ Filtros</h2><button id="clearFilters">Limpar tudo</button></div>
+                    <fieldset class="filter-group">
+                        <legend>Tipo de projeto</legend>
+                        <label class="filter-option"><input type="checkbox" name="type" value="Projeto pontual"> Projeto pontual</label>
+                        <label class="filter-option"><input type="checkbox" name="type" value="Contrato recorrente"> Contrato recorrente</label>
+                        <label class="filter-option"><input type="checkbox" name="type" value="Tempo integral"> Tempo integral</label>
+                        <label class="filter-option"><input type="checkbox" name="type" value="Tempo parcial"> Tempo parcial</label>
+                    </fieldset>
+                    <fieldset class="filter-group">
+                        <legend>Modalidade</legend>
+                        <label class="filter-option"><input type="checkbox" name="mode" value="Remoto"> Remoto</label>
+                        <label class="filter-option"><input type="checkbox" name="mode" value="Híbrido"> Híbrido</label>
+                        <label class="filter-option"><input type="checkbox" name="mode" value="Presencial"> Presencial</label>
+                    </fieldset>
+                    <fieldset class="filter-group">
+                        <legend>Faixa de valor</legend>
+                        <div class="range-row">
+                            <input id="budgetRange" type="range" min="1000" max="20000" step="500" value="20000">
+                            <div class="budget-labels"><span>R$ 0</span><span id="budgetLabel">R$ 20.000+</span></div>
+                        </div>
+                    </fieldset>
+                </aside>
+
+                <section class="projects-section">
+                    <div class="projects-head">
+                        <h2>Projetos em destaque</h2>
+                        <div class="projects-tools">
+                            <label for="sortFilter">Ordenar por:</label>
+                            <select id="sortFilter"><option value="recent">Mais recentes</option><option value="budget">Maior orçamento</option></select>
+                            <div class="view-toggle">
+                                <button id="gridToggle" class="active" aria-label="Visualização em grade">▦</button>
+                                <button id="listToggle" aria-label="Visualização em lista">☷</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-grid" id="projectGrid"></div>
+                </section>
+            </div>
+        </section>
+
+        <section id="applicationsView" class="view">
+            <div class="summary">
+                <div class="stat"><span>Candidaturas</span><strong id="totalApplications">3</strong></div>
+                <div class="stat"><span>Em análise</span><strong id="pendingApplications">2</strong></div>
+                <div class="stat"><span>Aprovadas</span><strong id="acceptedApplications">1</strong></div>
+            </div>
+            <table>
+                <thead><tr><th>Oportunidade</th><th>Empresa</th><th>Enviado em</th><th>Status</th></tr></thead>
+                <tbody id="applicationsBody"></tbody>
+            </table>
+        </section>
+
+        <section id="profileView" class="view">
+            <div class="profile-layout">
+                <aside class="profile-card">
+                    <div class="profile-avatar">MC</div>
+                    <h3>Mariana Costa</h3>
+                    <p>UI/UX Designer</p>
+                    <button class="btn btn-secondary">Alterar foto</button>
+                </aside>
+                <form class="profile-form" id="profileForm">
+                    <h3>Informações do perfil</h3>
+                    <div class="form-grid">
+                        <div><label for="fullName">Nome completo</label><input id="fullName" value="Mariana Costa"></div>
+                        <div><label for="profession">Profissão</label><input id="profession" value="UI/UX Designer"></div>
+                        <div><label for="email">E-mail</label><input id="email" type="email" value="mariana@email.com"></div>
+                        <div><label for="location">Localização</label><input id="location" value="São Paulo, SP"></div>
+                        <div class="full"><label for="skills">Habilidades</label><input id="skills" value="Figma, UX Research, Design System"></div>
+                        <div class="full"><label for="bio">Sobre mim</label><textarea id="bio" rows="5">Designer focada em criar experiências digitais simples, acessíveis e alinhadas aos objetivos do negócio.</textarea></div>
+                        <div class="full"><button class="btn btn-primary" type="submit">Salvar alterações</button></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="detailsModal">
+        <div class="modal-box">
+            <div class="modal-head"><h2 id="modalTitle"></h2><button class="close" id="closeModal">&times;</button></div>
+            <p id="modalCompany"></p>
+            <span id="modalCategory"></span>
+            <p id="modalDescription"></p>
+            <strong id="modalBudget"></strong> · <span id="modalMode"></span>
+            <div style="margin-top:20px"><button class="btn btn-primary" id="applyButton">Enviar candidatura</button></div>
+        </div>
+    </div>
+
+    <div class="modal" id="applyModal">
+        <div class="modal-box">
+            <div class="modal-head"><h2>Enviar candidatura</h2><button class="close" id="closeApplyModal">&times;</button></div>
+            <form id="applicationForm">
+                <input type="hidden" id="applyOpportunityId">
+                <label for="proposal">Mensagem para a empresa</label>
+                <textarea id="proposal" rows="6" required style="width:100%;padding:12px" placeholder="Conte por que você é a pessoa ideal..."></textarea>
+                <div style="margin-top:14px"><button class="btn btn-primary" type="submit">Enviar candidatura</button></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Candidatura enviada com sucesso!</div>
+
+</body>
+</html>
