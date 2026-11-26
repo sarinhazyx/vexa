@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VEXA | Área Empresarial</title>
+
+    <!-- Tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Estilização -->
+    <link rel="stylesheet" href="../../css/empresa.css">
+</head>
+
+<body>
+
+    <!-- Navegação superior -->
+    <header class="header">
+        <div class="header-container">
+
+            <a href="#" class="logo">
+                <span class="logo-symbol"></span>
+                <span>vexa</span>
+                <small>BUSINESS</small>
+            </a>
+
+            <nav class="navigation">
+                <button class="nav-link active" data-page="inicio">
+                    Visão geral
+                </button>
+
+                <button class="nav-link" data-page="projetos">
+                    Projetos
+                </button>
+
+                <button class="nav-link" data-page="freelancers">
+                    Explorar talentos
+                </button>
+
+                <button class="nav-link" data-page="perfil">
+                    Minha empresa
+                </button>
+            </nav>
+
+            <button class="profile-avatar" aria-label="Perfil da empresa">
+                E
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="workspace" id="workspace">
+
+        <!-- Apresentação -->
+        <section class="welcome">
+
+            <div class="welcome-text">
+                <span class="eyebrow">
+                    <span class="indicator"></span>
+                    SEU WORKSPACE
+                </span>
+
+                <h1>Olá, empresa.</h1>
+
+                <p>Tudo o que sua empresa precisa, em um só lugar.</p>
+            </div>
+
+            <button class="btn-primary" id="new-project">
+                <i data-lucide="plus"></i>
+                Novo projeto
+            </button>
+
+        </section>
+
+        <!-- Indicadores -->
+        <section class="overview">
+
+            <article class="metric">
+                <span>Projetos ativos</span>
+                <strong id="active-projects">02</strong>
+                <small>Em andamento</small>
+            </article>
+
+            <article class="metric">
+                <span>Propostas recebidas</span>
+                <strong id="total-proposals">15</strong>
+                <small>Novas possibilidades</small>
+            </article>
+
+            <article class="metric">
+                <span>Contratações</span>
+                <strong id="total-hires">01</strong>
+                <small>Projeto concluído</small>
+            </article>
+
+        </section>
+
+        <!-- Projetos recentes -->
+        <section class="projects-section">
+
+            <div class="section-header">
+                <h2>Projetos recentes</h2>
+
+                <button class="btn-text" id="view-projects">
+                    Ver todos
+                    <i data-lucide="arrow-up-right"></i>
+                </button>
+            </div>
+
+            <div class="projects-table">
+
+                <div class="table-header">
+                    <span>Nome do projeto</span>
+                    <span>Status</span>
+                    <span>Propostas</span>
+                </div>
+
+                <div class="project-row">
+                    <div class="project-info">
+                        <div class="project-icon">
+                            <i data-lucide="diamond"></i>
+                        </div>
+
+                        <div>
+                            <h3>Identidade visual</h3>
+                            <p>Design & Branding</p>
+                        </div>
+                    </div>
+
+                    <span class="status">
+                        <span class="indicator"></span>
+                        Ativo
+                    </span>
+
+                    <span class="proposal-count">08</span>
+                </div>
+
+                <div class="project-row">
+                    <div class="project-info">
+                        <div class="project-icon">
+                            <i data-lucide="code-2"></i>
+                        </div>
+
+                        <div>
+                            <h3>Website institucional</h3>
+                            <p>Desenvolvimento</p>
+                        </div>
+                    </div>
+
+                    <span class="status">
+                        <span class="indicator"></span>
+                        Ativo
+                    </span>
+
+                    <span class="proposal-count">04</span>
+                </div>
+
+                <div class="project-row">
+                    <div class="project-info">
+                        <div class="project-icon">
+                            <i data-lucide="chart-no-axes-column"></i>
+                        </div>
+
+                        <div>
+                            <h3>Estratégia de conteúdo</h3>
+                            <p>Marketing digital</p>
+                        </div>
+                    </div>
+
+                    <span class="status">
+                        <span class="indicator"></span>
+                        Em análise
+                    </span>
+
+                    <span class="proposal-count">03</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer class="workspace-footer">
+            VEXA / Workspace empresarial
+        </footer>
+
+    </main>
+
+    <!-- Janela de mensagens -->
+    <section class="chat-window" id="chat-window" hidden>
+
+        <div class="chat-header">
+            <h2>Mensagens</h2>
+
+            <button id="close-chat" aria-label="Fechar mensagens">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+
+        <div class="chat-content" id="chat-content">
+            <div class="chat-empty">
+                <i data-lucide="messages-square"></i>
+                <h3>Suas conversas</h3>
+                <p>Conecte-se com novos talentos.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Botão flutuante de mensagens -->
+    <button class="chat-toggle" id="chat-toggle" aria-label="Abrir mensagens" aria-expanded="false" aria-controls="chat-window">
+        <i data-lucide="message-circle"></i>
+        <span class="notification-dot"></span>
+    </button>
+
+    <!-- Biblioteca de ícones -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Funcionalidades -->
+    <script src="../../js/empresa.js"></script>
+
+</body>
+
+</html>
